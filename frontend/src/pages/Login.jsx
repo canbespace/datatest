@@ -19,10 +19,11 @@ const Login = () => {
     } catch (err) {
       setMessage(err.response?.data?.message || 'Login failed.');
     }
+  
   };
 
   return (
-    <div>
+    <div style={{ border: '1px solid red' }}>
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <input
