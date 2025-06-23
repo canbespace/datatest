@@ -1,17 +1,11 @@
 FROM node:18
 
-# Set working directory
 WORKDIR /app
 
-# Copy package files and install dependencies
-COPY package*.json ./
+COPY backend/package*.json ./
 RUN npm install
 
-# Copy the rest of the app
-COPY . .
+COPY backend/ ./
 
-# Expose the port your app runs on (adjust if needed)
 EXPOSE 3000
-
-# Start the app
 CMD ["npm", "start"]
