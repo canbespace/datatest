@@ -21,6 +21,8 @@ const Login = () => {
     }
   
   };
+  
+  console.log("Login page mounted");
 
   return (
     <div style={{ border: '1px solid red' }}>
