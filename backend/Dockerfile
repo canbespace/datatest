@@ -1,10 +1,17 @@
-FROM node:18-alpine
+# Use Node.js base image
+FROM node:18
 
+# Set working directory
 WORKDIR /app
 
-COPY . .
+# Copy package.json and lockfile first
+COPY package*.json ./
 
+# Install dependencies
 RUN npm install
 
-EXPOSE 3000
-CMD ["node", "index.js"]
+# Copy the rest of the app
+COPY . .
+
+# Start the app
+CMD ["npm", "start"]
