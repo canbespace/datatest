@@ -4,7 +4,7 @@ FROM node:18
 WORKDIR /app
 
 # Copy package files and install dependencies
-COPY package*.json ./
+COPY ./backend/package*.json ./
 RUN npm install
 
 # Copy the rest of the app
