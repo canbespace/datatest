@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+const { email, password, role } = req.body;
+// Default to 'user' if role isn't provided
+const newUser = new User({ email, password: hashed, role: role || "user" });
 
 function Register() {
-  const [formData, setFormData] = useState({ email: '', password: '' });
-  const [message, setMessage] = useState('');
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -15,26 +18,29 @@ function Register() {
     e.preventDefault();
 
     try {
-      const res = await fetch('https://datatest-b2k5.onrender.com/api/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        "https://datatest-b2k5.onrender.com/api/auth/register",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        },
+      );
 
       const data = await res.json();
       if (res.ok) {
-        setMessage('✅ Registered successfully!');
-        setFormData({ email: '', password: '' });
+        setMessage("✅ Registered successfully!");
+        setFormData({ email: "", password: "" });
       } else {
         setMessage(`❌ ${data.message}`);
       }
     } catch (err) {
-      setMessage('❌ Server error. Please try again later.');
+      setMessage("❌ Server error. Please try again later.");
     }
   };
 
   return (
-    <div style={{ maxWidth: '400px', margin: 'auto', padding: '1rem' }}>
+    <div style={{ maxWidth: "400px", margin: "auto", padding: "1rem" }}>
       <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <input
@@ -44,7 +50,7 @@ function Register() {
           value={formData.email}
           onChange={handleChange}
           required
-          style={{ display: 'block', marginBottom: '10px', width: '100%' }}
+          style={{ display: "block", marginBottom: "10px", width: "100%" }}
         />
         <input
           name="password"
@@ -53,7 +59,7 @@ function Register() {
           value={formData.password}
           onChange={handleChange}
           required
-          style={{ display: 'block', marginBottom: '10px', width: '100%' }}
+          style={{ display: "block", marginBottom: "10px", width: "100%" }}
         />
         <button type="submit">Register</button>
       </form>

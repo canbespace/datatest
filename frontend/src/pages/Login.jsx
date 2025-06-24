@@ -1,31 +1,47 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [formData, setFormData] = useState({ email: '', password: '' });
-  const [message, setMessage] = useState('');
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+  console.log("Redirecting to admin dashboard...");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // move this up!
+
     try {
-      const res = await axios.post('https://datatest-b2k5.onrender.com/api/auth/login', formData);
-      setMessage('Login successful! 🔓');
-      console.log('Received token:', res.data.token);
-      // You could also save it to localStorage here
+      const res = await axios.post(
+        "https://datatest-b2k5.onrender.com/api/auth/login",
+        formData,
+      );
+
+      const token = res.data.token;
+      if (token) {
+        const decoded = JSON.parse(atob(token.split(".")[1]));
+        localStorage.setItem("token", token);
+        localStorage.setItem("role", decoded.role);
+        setMessage("Login successful! 🔓");
+
+        // Redirect after storing
+        if (decoded.role === "admin") {
+          navigate("/admin");
+        } else {
+          navigate("/knowledge");
+        }
+      }
     } catch (err) {
-      setMessage(err.response?.data?.message || 'Login failed.');
+      setMessage(err.response?.data?.message || "Login failed.");
     }
-  
   };
-  
-  console.log("Login page mounted");
 
   return (
-    <div style={{ border: '1px solid red' }}>
+    <div style={{ border: "1px solid red", padding: "1rem", width: "300px" }}>
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <input
