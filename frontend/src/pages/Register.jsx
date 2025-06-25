@@ -1,26 +1,14 @@
 // register.jsx form
 import React, { useState } from "react";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+const [loading, setLoading] = useState(false);
 
 function Register() {
-  const navigate = useNavigate(); // 👈 make sure this is declared before useEffect!
-  
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     role: "user",
   });
-  
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    const role = localStorage.getItem("role");
-    if (!token || role !== "admin") {
-      navigate("/login");
-    }
-  }, [navigate]);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -31,7 +19,7 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true); // 开始加载
     try {
       const res = await fetch(
         "https://datatest-b2k5.onrender.com/api/auth/register",
@@ -87,7 +75,9 @@ function Register() {
           <option value="editor">Editor</option>
           <option value="admin">Admin</option>
         </select>
-        <button type="submit">Register</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Registering..." : "Register"}
+        </button>
       </form>
       <p>{message}</p>
     </div>
