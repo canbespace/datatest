@@ -10,9 +10,10 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const knowledgeRoutes = require("./routes/knowledge"); //Handles knowledge-based CRUD endpoints (with access control)
+//const knowledgeRoutes = require("./routes/knowledge"); //Handles knowledge-based CRUD endpoints (with access control)
 
-app.use("/api/knowledge", knowledgeRoutes);
+app.use("/api/auth", authRoutes); // for login, register, logout
+
 app.use(cors());
 app.use(express.json());
 
