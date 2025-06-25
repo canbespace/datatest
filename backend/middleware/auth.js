@@ -1,3 +1,4 @@
+//In plain terms, it acts like a locked door: if a user tries to access a restricted route without a valid token (or with an expired one), this middleware slams the door shut with a 401 Access Denied.
 const jwt = require("jsonwebtoken");
 
 function requireAuth(req, res, next) {

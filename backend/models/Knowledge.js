@@ -1,3 +1,5 @@
+//A backend setup for storing knowledge entries—could be for a wiki, blog, note-taking app, or even a learning database.
+
 const mongoose = require("mongoose");
 
 const knowledgeSchema = new mongoose.Schema({

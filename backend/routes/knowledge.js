@@ -1,29 +1,10 @@
+/* this is the protected API layer for managing knowledge data. It only allows certain actions based on user roles, giving you control over who can create, read, and delete knowledge entries. */
+
 const express = require("express");
 const router = express.Router();
-const requireAuth = require("../middleware/auth");
-const requireRole = require("../middleware/role");
-const Knowledge = require("../models/Knowledge");
-
-/* GET all entries (protected)
-router.get("/", requireAuth, async (req, res) => {
-  try {
-    const entries = await Knowledge.find();
-    res.json(entries);
-  } catch (err) {
-    res.status(500).json({ error: "Server error" });
-  }
-});
-
-// POST a new entry (protected)
-router.post("/", requireAuth, async (req, res) => {
-  const { title, content, tags } = req.body;
-  try {
-    const newEntry = await Knowledge.create({ title, content, tags });
-    res.status(201).json(newEntry);
-  } catch (err) {
-    res.status(400).json({ error: "Invalid data" });
-  }
-}); */
+const requireAuth = require("../middleware/auth"); //Middleware that ensures the user is logged in.
+const requireRole = require("../middleware/role"); //Middleware that restricts access based on user roles.
+const Knowledge = require("../models/Knowledge"); //The Mongoose model for your knowledge base.
 
 router.post(
   "/",

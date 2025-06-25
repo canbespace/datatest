@@ -1,12 +1,14 @@
-const express = require("express");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const User = require("../models/User.js");
-const requireAuth = require("../middleware/auth");
+//This auth.js file defines authentication-related routes for a Node.js app using Express and MongoDB. It handles user registration and login, which are the backbone of most authentication systems.
+
+const express = require("express"); //Framework to build the routes.
+const bcrypt = require("bcryptjs"); //Used to hash passwords for secure storage.
+const jwt = require("jsonwebtoken"); //Used to issue JWT tokens when a user logs in.
+const User = require("../models/User.js"); //Imports the user schema/model
+const requireAuth = require("../middleware/auth"); //protects routes that need a logged-in user.
 
 const router = express.Router();
 
-// Register
+// Register, checks if user exists, hashes password, and saves new user
 router.post("/register", async (req, res) => {
   try {
     const { email, password, role } = req.body;

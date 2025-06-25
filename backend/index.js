@@ -1,15 +1,16 @@
-// index.js
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const authRoutes = require("./routes/auth.js");
+// index.js This is the main entry point for the Node.js Express server—a central hub that wires everything together
+
+const express = require("express"); //Handle routing and HTTP methods
+const mongoose = require("mongoose"); //Connect to your MongoDB database
+const cors = require("cors"); //Allow cross-origin requests
+const dotenv = require("dotenv"); //Load environment variables like MONGO_URI and PORT from a .env file (dotenv)
+const authRoutes = require("./routes/auth.js"); //Handles user authentication (register/login).
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const knowledgeRoutes = require("./routes/knowledge");
+const knowledgeRoutes = require("./routes/knowledge"); //Handles knowledge-based CRUD endpoints (with access control)
 
 app.use("/api/knowledge", knowledgeRoutes);
 app.use(cors());
