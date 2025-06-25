@@ -20,15 +20,6 @@ function App() {
             </AdminRoute>
           }
         />
-
-        <Route
-          path="/admin"
-          element={
-            <AdminRoute>
-              <AdminDashboard />
-            </AdminRoute>
-          }
-        />
       </Routes>
     </BrowserRouter>
   );
