@@ -1,11 +1,24 @@
+// register.jsx form
 import React, { useState } from "react";
-const { email, password, role } = req.body;
-// Default to 'user' if role isn't provided
-const newUser = new User({ email, password: hashed, role: role || "user" });
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const navigate = useNavigate(); // 👈 make sure this is declared before useEffect!
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    role: "user",
+  });
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const role = localStorage.getItem("role");
+    if (!token || role !== "admin") {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -61,6 +74,17 @@ function Register() {
           required
           style={{ display: "block", marginBottom: "10px", width: "100%" }}
         />
+        <select
+          name="role"
+          value={formData.role}
+          onChange={handleChange}
+          required
+          style={{ display: "block", marginBottom: "10px", width: "100%" }}
+        >
+          <option value="user">User</option>
+          <option value="editor">Editor</option>
+          <option value="admin">Admin</option>
+        </select>
         <button type="submit">Register</button>
       </form>
       <p>{message}</p>

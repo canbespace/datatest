@@ -1,7 +1,8 @@
+//app.js
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import AdminDashboard from "./pages/AdminDashboard"; // or "./pages/AdminDashboard"
+import AdminDashboard from "./pages/AdminDashboard"; 
 import AdminRoute from "./pages/AdminRoute";
 
 function App() {
