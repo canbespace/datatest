@@ -1,4 +1,4 @@
-// src/components/AdminRoute.js
+// src/pages/AdminRoute.js
 import React from "react";
 import { Navigate } from "react-router-dom";
 
