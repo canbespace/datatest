@@ -30,9 +30,9 @@ const Login = () => {
 
         // Redirect after storing
         if (decoded.role === "admin") {
-          navigate("/admin");
+          navigate("/AdminDashboard");
         } else {
-          navigate("/knowledge");
+          navigate("/Register");
         }
       }
     } catch (err) {
