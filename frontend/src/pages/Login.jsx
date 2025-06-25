@@ -13,7 +13,7 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // move this up!
+    e.preventDefault();
 
     try {
       const res = await axios.post(
@@ -26,12 +26,12 @@ const Login = () => {
         const decoded = JSON.parse(atob(token.split(".")[1]));
         localStorage.setItem("token", token);
         localStorage.setItem("role", decoded.role);
-        setMessage("Login successful! 🔓");
-
         // Redirect after storing
         if (decoded.role === "admin") {
           navigate("/AdminDashboard");
+          setMessage("Login successful!Redirecting");
         } else {
+          setMessage("No priviledge!Redirecting");
           navigate("/Register");
         }
       }
