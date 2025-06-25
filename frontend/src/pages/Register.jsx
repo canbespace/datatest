@@ -5,11 +5,13 @@ import { useNavigate } from "react-router-dom";
 
 function Register() {
   const navigate = useNavigate(); // 👈 make sure this is declared before useEffect!
+  
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     role: "user",
   });
+  
   const [message, setMessage] = useState("");
 
   useEffect(() => {

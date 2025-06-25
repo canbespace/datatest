@@ -2,7 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import AdminDashboard from "./pages/AdminDashboard"; 
+import AdminDashboard from "./pages/AdminDashboard";
 import AdminRoute from "./pages/AdminRoute";
 
 function App() {
@@ -11,7 +11,6 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/knowledge" element={<Knowledge />} />
-        <Route path="/dashboard" element={<Dashboard />} />
 
         <Route
           path="/register"
