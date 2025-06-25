@@ -1,14 +1,24 @@
 // register.jsx form
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-const [loading, setLoading] = useState(false);
 
 function Register() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     role: "user",
   });
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const role = localStorage.getItem("role");
+    if (!token || role !== "admin") {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -34,6 +44,9 @@ function Register() {
       if (res.ok) {
         setMessage("✅ Registered successfully!");
         setFormData({ email: "", password: "" });
+        setTimeout(() => {
+          navigate("/adminDashboard");
+        }, 2000);
       } else {
         setMessage(`❌ ${data.message}`);
       }
