@@ -1,8 +1,8 @@
 //AdminDashboard.js
 
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+e.preventDefault(); //
 
 const AdminDashboard = () => {
   const [entries, setEntries] = useState([]);
@@ -15,7 +15,6 @@ const AdminDashboard = () => {
   });
 
   const handleRegister = async (e) => {
-    e.preventDefault();
     try {
       const token = localStorage.getItem("token");
       await axios.post("/api/auth/register", newUser, {

@@ -15,9 +15,9 @@ function App() {
         <Route
           path="/register"
           element={
-            <PrivateRoute>
+            <AdminRoute>
               <Register />
-            </PrivateRoute>
+            </AdminRoute>
           }
         />
 

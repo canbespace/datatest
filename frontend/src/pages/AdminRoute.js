@@ -2,6 +2,7 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 
+// Protects routes for admin users only
 const AdminRoute = ({ children }) => {
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
