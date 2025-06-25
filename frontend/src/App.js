@@ -1,6 +1,6 @@
 //app.js
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-//import Register from "./pages/Register";
+import Register from "./pages/Register";
 import Login from "./pages/Login";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminRoute from "./pages/AdminRoute";

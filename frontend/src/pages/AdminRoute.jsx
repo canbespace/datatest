@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 const AdminRoute = ({ children }) => {
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
-
+  console.log("AdminRoute检查：", { token, role }); // 🚨 调试
   // Not logged in
   if (!token) return <Navigate to="/login" replace />;
 
