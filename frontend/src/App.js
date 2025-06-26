@@ -5,13 +5,12 @@ import Login from "./pages/Login";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminRoute from "./pages/AdminRoute";
 
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/knowledge" element={<Knowledge />} />
-
         <Route
           path="/register"
           element={
