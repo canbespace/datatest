@@ -19,6 +19,14 @@ const Login = () => {
       );
 
       const token = res.data.token;
+      console.log("Received token:", token);
+      const decoded = JSON.parse(atob(token.split(".")[1]));
+      console.log("Decoded payload:", decoded);
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("role", decoded.role);
+      console.log("Role stored in localStorage:",     localStorage.getItem("role"));
+
       if (token) {
         const decoded = JSON.parse(atob(token.split(".")[1]));
         localStorage.setItem("token", token);
