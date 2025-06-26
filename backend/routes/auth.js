@@ -48,8 +48,9 @@ router.post("/login", async (req, res) => {
     process.env.JWT_SECRET,
     { expiresIn: "1h" },
   );
-
-  res.status(200).json({ token });
+  // ✅ Send the response *after* everything checks out
+  res.status(200).json({ message: "Login successful", token });
+  //res.status(200).json({ token });
 });
 
 // routes/knowledge.js

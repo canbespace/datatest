@@ -6,8 +6,6 @@ const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  console.log("Redirecting to admin dashboard...");
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -28,8 +26,8 @@ const Login = () => {
         localStorage.setItem("role", decoded.role);
         // Redirect after storing
         if (decoded.role === "admin") {
-          navigate("/AdminDashboard");
           setMessage("Login successful!Redirecting");
+          navigate("/AdminDashboard");
         } else {
           setMessage("No priviledge!Redirecting");
           navigate("/Register");
