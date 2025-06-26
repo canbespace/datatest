@@ -25,7 +25,7 @@ const Login = () => {
 
       localStorage.setItem("token", token);
       localStorage.setItem("role", decoded.role);
-      console.log("Role stored in localStorage:",     localStorage.getItem("role"));
+      console.log("Role stored in localStorage:", localStorage.getItem("role"));
 
       if (token) {
         const decoded = JSON.parse(atob(token.split(".")[1]));
@@ -34,10 +34,10 @@ const Login = () => {
         // Redirect after storing
         const navigate = useNavigate();
         if (decoded.role === "admin") {
-          setMessage("Login successful!Redirecting");
+          console.log("Redirecting to AdminDashboard");
           navigate("/AdminDashboard");
         } else {
-          setMessage("No priviledge!Redirecting");
+          console.log("Redirecting to Register (non-admin user)");
           navigate("/Register");
         }
       }
