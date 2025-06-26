@@ -1,28 +1,37 @@
-# Dockerfile at project root
+# Use official Node image
 FROM node:18
 
-# Set app directory
+# Set working directory for backend
 WORKDIR /datatest/backend
 
-# Copy backend files
+# Copy backend package files and install dependencies
 COPY backend/package*.json ./
-COPY . .
-
-# Install backend dependencies
 RUN npm install
 
-# Build frontend
+# Copy all backend source code
+COPY backend/ ./
+
+# --- Build Frontend ---
+
+# Set working directory for frontend
 WORKDIR /datatest/frontend
-COPY package*.json ./
+
+# Copy frontend package files and install dependencies
+COPY frontend/package*.json ./
 RUN npm install
+
+# Copy frontend source code and build
 COPY frontend/ ./
 RUN npm run build
 
-# Back to server root
-WORKDIR /backend
+# --- Merge frontend build into backend ---
 
-# Tell Express where to find frontend build
-RUN mv client/build ./client_build
+# Switch back to backend folder
+WORKDIR /datatest/backend
 
-# Use original index.js to serve frontend and API
-CMD [ "node", "index.js" ]
+# Move built frontend files into backend
+RUN mkdir -p client_build
+RUN cp -r /datatest/frontend/build/* ./client_build/
+
+# Start backend server
+CMD ["node", "index.js"]
