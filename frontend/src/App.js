@@ -2,7 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import AdminDashboard from "./admin/AdminDashboard";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminRoute from "./pages/AdminRoute";
 
 function App() {
@@ -18,15 +18,17 @@ function App() {
             <AdminRoute>
               <Register />
             </AdminRoute>
-          }/>
-        
-        <Route 
-          path="/AdminDashboard" 
+          }
+        />
+
+        <Route
+          path="/AdminDashboard"
           element={
             <AdminRoute>
-          <AdminDashboard />
+              <AdminDashboard />
             </AdminRoute>
-          } />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

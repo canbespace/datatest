@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
-  const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -25,6 +24,7 @@ const Login = () => {
         localStorage.setItem("token", token);
         localStorage.setItem("role", decoded.role);
         // Redirect after storing
+        const navigate = useNavigate();
         if (decoded.role === "admin") {
           setMessage("Login successful!Redirecting");
           navigate("/AdminDashboard");
