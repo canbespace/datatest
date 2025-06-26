@@ -12,9 +12,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 //const knowledgeRoutes = require("./routes/knowledge"); //Handles knowledge-based CRUD endpoints (with access control)
 
-app.use("/api/auth", authRoutes); // for login, register, logout
+app.use(
+  cors({
+    origin: "http://tokee.info", // ← your frontend domain
+    credentials: true, // optional, if you're sending cookies or auth headers
+  }),
+);
 
-app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
