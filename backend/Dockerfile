@@ -2,24 +2,24 @@
 FROM node:18
 
 # Set app directory
-WORKDIR /app
+WORKDIR /datatest/backend
 
 # Copy backend files
-COPY package*.json ./
+COPY backend/package*.json ./
 COPY . .
 
 # Install backend dependencies
 RUN npm install
 
 # Build frontend
-WORKDIR /app/client
-COPY client/package*.json ./
+WORKDIR /datatest/frontend
+COPY package*.json ./
 RUN npm install
-COPY client/ ./
+COPY frontend/ ./
 RUN npm run build
 
 # Back to server root
-WORKDIR /app
+WORKDIR /backend
 
 # Tell Express where to find frontend build
 RUN mv client/build ./client_build
