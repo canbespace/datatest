@@ -12,6 +12,10 @@ WORKDIR /app/frontend
 COPY frontend/package*.json ./
 RUN npm install
 COPY frontend/ ./
+
+RUN ls -la
+RUN cat package.json
+
 RUN npm run build
 
 # --- Move React build into backend ---
