@@ -20,19 +20,19 @@ const Login = () => {
         formData,
       );
 
-      //  const token = res.data.token;
-      //  const decoded = JSON.parse(atob(token.split(".")[1]));
+      const token = res.data.token;
+      const decoded = JSON.parse(atob(token.split(".")[1]));
 
       // Store token and role
-      //  localStorage.setItem("token", token);
-      // localStorage.setItem("role", decoded.role);
+      localStorage.setItem("token", token);
+      localStorage.setItem("role", decoded.role);
 
       // ✅ Redirect based on role
-      // if (decoded.role === "admin") {
-      navigate("/admin/AdminDashboard");
-      // } else {
-      //   navigate("/Register");
-      // }
+      if (decoded.role === "admin") {
+        navigate("/admin/AdminDashboard");
+      } else {
+        navigate("/Register");
+      }
     } catch (err) {
       setMessage(err.response?.data?.message || "Login failed.");
     }
