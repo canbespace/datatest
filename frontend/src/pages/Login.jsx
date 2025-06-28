@@ -34,7 +34,7 @@ const Login = () => {
           decoded.role === "admin" ? "/admin/AdminDashboard" : "/Register",
         );
 
-        navigate("/admin/AdminDashboard");
+        navigate("/AdminDashboard");
       } else {
         navigate("/knowledge");
       }
