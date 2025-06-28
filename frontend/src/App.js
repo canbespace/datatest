@@ -5,7 +5,6 @@ import Login from "./pages/Login";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminRoute from "./pages/AdminRoute";
 
-
 function App() {
   return (
     <BrowserRouter>
