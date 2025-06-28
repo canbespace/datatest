@@ -1,5 +1,4 @@
 import React from "react";
-import KnowledgeManager from "./KnowledgeManger"; // Adjust path if needed
 
 const KnowledgeManager = ({
   articles,
