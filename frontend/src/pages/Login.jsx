@@ -23,7 +23,6 @@ const Login = () => {
 
       const token = res.data.token;
       const decoded = JSON.parse(atob(token.split(".")[1]));
-
       console.log(decoded);
       // Store token and role
       localStorage.setItem("token", token);
@@ -34,7 +33,7 @@ const Login = () => {
       if (decoded.role === "admin") {
         navigate("/admin/AdminDashboard");
       } else {
-        navigate("/Register");
+        navigate("/admin/AdminDashboard");
       }
     } catch (err) {
       setMessage(err.response?.data?.message || "Login failed.");
