@@ -2,7 +2,7 @@ import React from "react";
 
 const TagManager = ({ existingTags, createTag, deleteTag, updateTag }) => {
   return (
-    <TagEditor
+    <TagManager
       tags={existingTags}
       onCreate={(name) => createTag(name)}
       onDelete={(id) => deleteTag(id)}

@@ -9,7 +9,7 @@ const KnowledgeManager = ({
   return (
     <div>
       {articles.map((article) => (
-        <ArticleCard
+        <KnowledgeManager
           key={article.id}
           title={article.title}
           tags={article.tags}

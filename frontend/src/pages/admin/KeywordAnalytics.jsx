@@ -8,4 +8,4 @@ const KeywordAnalytics = () => {
   );
 };
 
-export default HelpCenter;
+export default KeywordAnalytics;
