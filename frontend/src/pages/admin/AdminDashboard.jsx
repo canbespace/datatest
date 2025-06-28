@@ -1,10 +1,10 @@
 // AdminDashboard.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import UserTable from "../pages/admin/UserTable";
-import KnowledgeManager from "../pages/admin/KnowledgeManager";
-import TagManager from "../pages/admin/TagManager";
-import KeywordAnalytics from "../pages/admin/KeywordAnalytics";
+import UserTable from "./UserTable";
+import KnowledgeManager from "./KnowledgeManager";
+import TagManager from "./TagManager";
+import KeywordAnalytics from "./KeywordAnalytics";
 
 const AdminDashboard = () => {
   const [entries, setEntries] = useState([]);
