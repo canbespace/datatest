@@ -16,6 +16,7 @@ COPY frontend/ ./
 RUN ls -la
 RUN cat package.json
 
+RUN chmod +x node_modules/.bin/react-scripts
 RUN npm run build
 
 # --- Move React build into backend ---
