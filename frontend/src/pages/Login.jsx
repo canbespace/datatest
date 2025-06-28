@@ -3,8 +3,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate(); // ✅ Must live here
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -19,27 +21,17 @@ const Login = () => {
       );
 
       const token = res.data.token;
-      console.log("Received token:", token);
       const decoded = JSON.parse(atob(token.split(".")[1]));
-      console.log("Decoded payload:", decoded);
 
+      // Store token and role
       localStorage.setItem("token", token);
       localStorage.setItem("role", decoded.role);
-      console.log("Role stored in localStorage:", localStorage.getItem("role"));
 
-      if (token) {
-        const decoded = JSON.parse(atob(token.split(".")[1]));
-        localStorage.setItem("token", token);
-        localStorage.setItem("role", decoded.role);
-        // Redirect after storing
-        const navigate = useNavigate();
-        if (decoded.role === "admin") {
-          console.log("Redirecting to AdminDashboard");
-          navigate("/AdminDashboard");
-        } else {
-          console.log("Redirecting to Register (non-admin user)");
-          navigate("/Register");
-        }
+      // ✅ Redirect based on role
+      if (decoded.role === "admin") {
+        navigate("/AdminDashboard");
+      } else {
+        navigate("/Register");
       }
     } catch (err) {
       setMessage(err.response?.data?.message || "Login failed.");
