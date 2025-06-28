@@ -27,12 +27,16 @@ const Login = () => {
       localStorage.setItem("token", token);
       localStorage.setItem("role", decoded.role);
 
-      console.log("decoded.role", decoded.role);
       // ✅ Redirect based on role
       if (decoded.role === "admin") {
+        console.log(
+          "Redirecting to:",
+          decoded.role === "admin" ? "/admin/AdminDashboard" : "/Register",
+        );
+
         navigate("/admin/AdminDashboard");
       } else {
-        navigate("/admin/AdminDashboard");
+        navigate("/knowledge");
       }
     } catch (err) {
       setMessage(err.response?.data?.message || "Login failed.");
