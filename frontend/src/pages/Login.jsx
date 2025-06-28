@@ -23,12 +23,11 @@ const Login = () => {
 
       const token = res.data.token;
       const decoded = JSON.parse(atob(token.split(".")[1]));
-      console.log(decoded);
       // Store token and role
       localStorage.setItem("token", token);
       localStorage.setItem("role", decoded.role);
 
-      localStorage.getItem("role");
+      console.log("decoded.role", decoded.role);
       // ✅ Redirect based on role
       if (decoded.role === "admin") {
         navigate("/admin/AdminDashboard");
