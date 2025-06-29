@@ -21,7 +21,7 @@ router.post("/register", async (req, res) => {
     const newUser = new User({
       email,
       password: hashed,
-      role: role || "user", // this line sets role dynamically
+      role: role || "admin", // this line sets role dynamically
     });
 
     await newUser.save();
