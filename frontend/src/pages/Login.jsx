@@ -17,7 +17,8 @@ const Login = () => {
     try {
       const res = await axios.post(
         "https://datatest-b2k5.onrender.com/api/auth/login",
-        formData);
+        formData,
+      );
       console.log("Login response:", res.data.token);
 
       const token = res.data.token;
@@ -27,7 +28,7 @@ const Login = () => {
       localStorage.setItem("role", decoded.role);
       console.log("Login role:", localStorage.getItem("role"));
       console.log("Login token:", localStorage.getItem("token"));
-  /*  
+      /*  
       // ✅ Redirect based on role
       if (decoded.role === "admin") {
         console.log(
@@ -35,15 +36,13 @@ const Login = () => {
           decoded.role === "admin" ? "/admin/AdminDashboard" : "/Register",
         );
   */
-        navigate("/AdminDashboard");
-  //    } else {
-   //     navigate("/knowledge");
-      }
+      navigate("/AdminDashboard");
+      //    } else {
+      //     navigate("/knowledge");
     } catch (err) {
       setMessage(err.response?.data?.message || "Login failed.");
     }
   };
-
   return (
     <div style={{ border: "1px solid red", padding: "1rem", width: "300px" }}>
       <h2>Login</h2>
