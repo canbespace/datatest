@@ -15,6 +15,7 @@ const Login = () => {
     e.preventDefault();
     console.log("准备提交表单");
     try {
+      console.log("开始提交表单");
       const res = await axios.post(
         "https://datatest-b2k5.onrender.com/api/auth/login",
         formData,
