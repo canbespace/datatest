@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import jwtDecode from "jwt-decode"; // 🔐 Safer than atob()
 
 const Login = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // ✅ Must live here
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
 
@@ -14,37 +13,30 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log("准备提交表单");
     try {
       const res = await axios.post(
         "https://datatest-b2k5.onrender.com/api/auth/login",
         formData,
       );
-
+      console.log("登录成功");
       const token = res.data.token;
-      const decoded = jwtDecode(token); // ✅ Proper JWT decoding
-
-      // 🚨 Avoid localStorage in production (use httpOnly cookies)
+      console.log("已获取到token:", token);
+      const decoded = JSON.parse(atob(token.split(".")[1]));
+      // Store token and role
       localStorage.setItem("token", token);
       localStorage.setItem("role", decoded.role);
-
-      // 🔒 Remove token logs in production!
-      if (process.env.NODE_ENV === "development") {
-        console.log("User role:", decoded.role);
-      }
-
-      // ✅ Redirect logic
+      console.log("已存储token和role是： ", decoded.role, token);
+      // ✅ Redirect based on role
       if (decoded.role === "admin") {
-        navigate("/AdminDashboard");
+        navigate("/admin/AdminDashboard");
       } else {
-        navigate("/knowledge"); // Now non-admins redirect too
+        navigate("/knowledge"); // 或其他普通用户页面
       }
     } catch (err) {
       setMessage(err.response?.data?.message || "Login failed.");
-      console.error("Login error:", err);
     }
   };
-
   return (
     <div style={{ border: "1px solid red", padding: "1rem", width: "300px" }}>
       <h2>Login</h2>
@@ -67,7 +59,7 @@ const Login = () => {
         />
         <button type="submit">Log In</button>
       </form>
-      {message && <p style={{ color: "red" }}>{message}</p>}
+      {message && <p>{message}</p>}
     </div>
   );
 };
