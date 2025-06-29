@@ -17,26 +17,27 @@ const Login = () => {
     try {
       const res = await axios.post(
         "https://datatest-b2k5.onrender.com/api/auth/login",
-        formData,
-      );
-      console.log("Login response:", res.data);
+        formData);
+      console.log("Login response:", res.data.token);
 
       const token = res.data.token;
       const decoded = JSON.parse(atob(token.split(".")[1]));
       // Store token and role
       localStorage.setItem("token", token);
       localStorage.setItem("role", decoded.role);
-
+      console.log("Login role:", localStorage.getItem("role"));
+      console.log("Login token:", localStorage.getItem("token"));
+  /*  
       // ✅ Redirect based on role
       if (decoded.role === "admin") {
         console.log(
           "Redirecting to:",
           decoded.role === "admin" ? "/admin/AdminDashboard" : "/Register",
         );
-
+  */
         navigate("/AdminDashboard");
-      } else {
-        navigate("/knowledge");
+  //    } else {
+   //     navigate("/knowledge");
       }
     } catch (err) {
       setMessage(err.response?.data?.message || "Login failed.");
