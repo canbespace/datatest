@@ -49,7 +49,12 @@ router.post("/login", async (req, res) => {
   );
   // ✅ Send the response *after* everything checks out
   res.status(200).json({ message: "Login successful", token });
-  //res.status(200).json({ token });
+  const decoded = JSON.parse(atob(token.split(".")[1]));
+  // Store token and role
+  localStorage.setItem("token", token);
+  localStorage.setItem("role", decoded.role);
+  console.log("Login role:", localStorage.getItem("role"));
+  console.log("Login token:", localStorage.getItem("token"));
 });
 
 // routes/knowledge.js

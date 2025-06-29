@@ -19,16 +19,16 @@ const Login = () => {
         "https://datatest-b2k5.onrender.com/api/auth/login",
         formData,
       );
-      console.log("Login response:", res.data.token);
+      //      console.log("Login response:", res.data.token);
 
       const token = res.data.token;
-      const decoded = JSON.parse(atob(token.split(".")[1]));
-      // Store token and role
-      localStorage.setItem("token", token);
-      localStorage.setItem("role", decoded.role);
-      console.log("Login role:", localStorage.getItem("role"));
-      console.log("Login token:", localStorage.getItem("token"));
-      /*  
+      /*  const decoded = JSON.parse(atob(token.split(".")[1]));
+       Store token and role
+        localStorage.setItem("token", token);
+       localStorage.setItem("role", decoded.role);
+            console.log("Login role:", localStorage.getItem("role"));
+            console.log("Login token:", localStorage.getItem("token"));
+        
       // ✅ Redirect based on role
       if (decoded.role === "admin") {
         console.log(
