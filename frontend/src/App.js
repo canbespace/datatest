@@ -5,11 +5,15 @@ import Login from "./pages/Login";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminRoute from "./pages/AdminRoute";
 import Knowledge from "./pages/knowledge";
+import Unauthorized from "./pages/Unauthorized"; // ✅ add this ...
+
+
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/unauthorized" element={<Unauthorized />} />
         <Route path="/knowledge" element={<Knowledge />} />
         <Route path="/login" element={<Login />} />
         <Route
