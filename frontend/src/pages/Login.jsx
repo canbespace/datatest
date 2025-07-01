@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+console.log("Login page mounted");
 const Login = () => {
-  console.log("App Loaded");
   const navigate = useNavigate(); // ✅ Must live here
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");
@@ -14,7 +14,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("准备提交表单");
+    console.log("App Loaded");
     try {
       console.log("开始提交表单");
       const res = await axios.post(
