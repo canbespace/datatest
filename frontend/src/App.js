@@ -4,11 +4,13 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminRoute from "./pages/AdminRoute";
+import Knowledge from "./pages/knowledge";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/knowledge" element={<Knowledge />} />
         <Route path="/login" element={<Login />} />
         <Route
           path="/register"
@@ -20,7 +22,7 @@ function App() {
         />
 
         <Route
-          path="/admindashboard"
+          path="/admin"
           element={
             <AdminRoute>
               <AdminDashboard />
