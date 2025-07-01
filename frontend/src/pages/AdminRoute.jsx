@@ -7,7 +7,7 @@ const AdminRoute = ({ children }) => {
 
   // Optional: add basic token and role check
   if (!token || role !== "admin") {
-    return <Navigate to="admindashboard" replace />;
+    return <Navigate to="/login" replace />;
   }
 
   return children;
