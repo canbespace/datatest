@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  console.log("App Loaded");
   const navigate = useNavigate(); // ✅ Must live here
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [message, setMessage] = useState("");

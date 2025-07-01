@@ -48,7 +48,7 @@ router.post("/login", async (req, res) => {
     { expiresIn: "1h" },
   );
   // ✅ Send the response *after* everything checks out
-  res.status(200).json({ message: "Login successful", token });
+  res.status(200).json({ message: "登陆成功", token });
 });
 
 // routes/knowledge.js
