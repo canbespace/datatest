@@ -1,9 +1,9 @@
 //app.js
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Register from "pages/Register";
-import Login from "pages/Login";
-import AdminDashboard from "/pages/admin/AdminDashboard";
-import AdminRoute from "./pages/AdminRoute";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import AdminDashboard from "./admin/AdminDashboard";
+import AdminRoute from "./AdminRoute";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         />
 
         <Route
-          path="/AdminDashboard"
+          path="/admindashboard"
           element={
             <AdminRoute>
               <AdminDashboard />
