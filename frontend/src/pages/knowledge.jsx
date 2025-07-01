@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Knowledge = () => {
+  console.log("Knowledge page mounted");
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
