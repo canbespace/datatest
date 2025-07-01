@@ -31,6 +31,7 @@ const Login = () => {
       console.log("已存储token和role是： ", decoded.role, token);
       // ✅ Redirect based on role
       if (decoded.role === "admin") {
+        alert("Redirecting to admin dashboard!");
         navigate("/admin/AdminDashboard");
       } else {
         navigate("/knowledge"); // 或其他普通用户页面
