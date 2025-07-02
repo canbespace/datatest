@@ -4,7 +4,6 @@ const express = require("express");
 const router = express.Router();
 const requireAuth = require("../middleware/auth"); //Middleware that ensures the user is logged in.
 const requireRole = require("../middleware/role"); //Middleware that restricts access based on user roles.
-const Knowledge = require("../models/Knowledge"); //The Mongoose model for your knowledge base.
 
 router.post(
   "/",
