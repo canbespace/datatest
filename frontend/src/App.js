@@ -4,10 +4,8 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminRoute from "./pages/AdminRoute";
-import Knowledge from "./pages/knowledge";
+import Knowledge from "./pages/Knowledge";
 import Unauthorized from "./pages/Unauthorized"; // ✅ add this ...
-
-
 
 function App() {
   return (
