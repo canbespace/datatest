@@ -27,9 +27,12 @@ const AdminDashboard = () => {
           return;
         }
 
-        const res = await axios.get("/api/knowledge", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await axios.get(
+          "https://datatest-b2k5.onrender.com/api/knowledge",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          },
+        );
         setEntries(res.data);
       } catch (err) {
         setMessage("⚠️ Error loading entries.");
@@ -43,9 +46,13 @@ const AdminDashboard = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      await axios.post("/api/auth/register", newUser, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.post(
+        "https://datatest-b2k5.onrender.com/api/auth/register",
+        newUser,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       setMsg("✅ User registered!");
       setNewUser({ email: "", password: "", role: "user" });
     } catch (err) {
@@ -56,9 +63,12 @@ const AdminDashboard = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`/api/knowledge/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://datatest-b2k5.onrender.com/api/knowledge/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       setEntries(entries.filter((entry) => entry._id !== id));
     } catch (err) {
       setMessage("⚠️ Failed to delete entry.");
