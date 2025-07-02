@@ -6,7 +6,7 @@ import Login from './pages/Login'; // or './components/Login'
 
 
 const API = axios.create({
-  baseURL: '/api',
+  baseURL: 'https://datatest-b2k5.onrender.com',
   withCredentials: true // if using cookies or sessions
 });
 

@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(
   cors({
-    origin: ["http://tokee.info", "https://your-replit-url.replit.dev"], // ← add your domains
+    origin: ["http://tokee.info", "https://tokee.info"], // ← your actual website domains
     credentials: true,
   }),
 );

@@ -9,7 +9,7 @@ const Knowledge = () => {
 
   useEffect(() => {
     axios
-      .get("/api/knowledge")
+      .get("https://datatest-b2k5.onrender.com/api/knowledge")
       .then((res) => setArticles(res.data))
       .catch((err) => console.error(err));
   }, []);
