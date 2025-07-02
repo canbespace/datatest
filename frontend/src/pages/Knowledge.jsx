@@ -1,3 +1,5 @@
+// pages/Knowledge.jsx, Publicly accessible for logged-in users to view knowledge entries.
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 

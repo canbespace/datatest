@@ -2,13 +2,13 @@
 
 const express = require("express");
 const router = express.Router();
-// const requireAuth = require("../middleware/auth"); //Middleware that ensures the user is logged in.
-// const requireRole = require("../middleware/role"); //Middleware that restricts access based on user roles.
+const requireAuth = require("../middleware/auth"); //Middleware that ensures the user is logged in.
+const requireRole = require("../middleware/role"); //Middleware that restricts access based on user roles.
 
 router.post(
   "/",
-  //requireAuth,
-  //requireRole(["admin", "editor"]),
+  requireAuth,
+  requireRole(["admin", "editor"]),
   async (req, res) => {
     // Only admin and editor can add entries
   },

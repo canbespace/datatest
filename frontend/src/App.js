@@ -1,4 +1,4 @@
-//app.js
+//app.js Mounts /api/knowledge, uses middleware
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
