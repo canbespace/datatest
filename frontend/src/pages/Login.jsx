@@ -32,7 +32,7 @@ const Login = () => {
       // ✅ Redirect based on role
       if (decoded.role === "admin") {
         alert("Redirecting to admin dashboard!");
-        navigate("/admin/AdminDashboard");
+        navigate("/admin");
       } else {
         navigate("/knowledge"); // 或其他普通用户页面
       }

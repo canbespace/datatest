@@ -11,6 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Login />} />
         <Route path="/unauthorized" element={<Unauthorized />} />
         <Route path="/knowledge" element={<Knowledge />} />
         <Route path="/login" element={<Login />} />
