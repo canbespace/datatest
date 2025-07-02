@@ -8,7 +8,7 @@ channel = "stable-24_05"
 run = ["sh", "-c", "npm start"]
 
 [workflows]
-runButton = "Run Backend"
+runButton = "Run Full Stack"
 
 [[workflows.workflow]]
 name = "Run Backend"
