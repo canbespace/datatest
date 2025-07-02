@@ -3,7 +3,7 @@ const express = require("express"); //Framework to build the routes.
 const bcrypt = require("bcryptjs"); //Used to hash passwords for secure storage.
 const jwt = require("jsonwebtoken"); //Used to issue JWT tokens when a user logs in.
 const User = require("../models/User.js"); //Imports the user schema/model
-const requireAuth = require("../middleware/auth");
+//const requireAuth = require("../middleware/auth");
 
 const router = express.Router();
 
