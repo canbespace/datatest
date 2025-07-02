@@ -14,8 +14,8 @@ const PORT = process.env.PORT || 3000;
 
 app.use(
   cors({
-    origin: "http://tokee.info", // ← your frontend domain
-    credentials: true, // optional, if you're sending cookies or auth headers
+    origin: ["http://tokee.info", "https://your-replit-url.replit.dev"], // ← add your domains
+    credentials: true,
   }),
 );
 
