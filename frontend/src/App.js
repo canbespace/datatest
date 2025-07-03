@@ -1,4 +1,3 @@
-//app.js Mounts /api/knowledge, uses middleware
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
@@ -9,7 +8,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />{" "}
+        <Route path="/" element={<Login />} />
         <Route path="/knowledge" element={<Knowledge />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -20,4 +19,3 @@ function App() {
 }
 
 export default App;
-/*--*/

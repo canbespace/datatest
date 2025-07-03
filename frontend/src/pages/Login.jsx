@@ -30,6 +30,8 @@ const Login = () => {
       console.log("Token:", token); //checkpoint 3
       if (role === "admin") {
       */
+      console.log("🚀 Attempting redirect to /admin");
+
       navigate("/admin");
     } catch (err) {
       setMessage("Login failed.");

@@ -7,6 +7,8 @@ import TagManager from "./TagManager";
 import KeywordAnalytics from "./KeywordAnalytics";
 
 const AdminDashboard = () => {
+  console.log("✅ AdminDashboard mounted!");
+
   const [entries, setEntries] = useState([]);
   const [message, setMessage] = useState("");
   const [msg, setMsg] = useState("");
