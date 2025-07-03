@@ -6,6 +6,7 @@ console.log("Login page mounted");
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,10 +20,14 @@ const Login = () => {
         formData,
       );
       const token = res.data.token;
-      // Optional: store token, decode role, etc.
       localStorage.setItem("token", token);
-      localStorage.setItem("role", res.data.role);
-      if (res.data.role === "admin") {
+
+      // Decode JWT payload (base64 decode)
+      const decodedPayload = JSON.parse(atob(token.split(".")[1]));
+      const role = decodedPayload.role;
+      localStorage.setItem("role", role);
+
+      if (role === "admin") {
         navigate("/admindashboard");
       } else navigate("/register");
     } catch (err) {
@@ -50,11 +55,9 @@ const Login = () => {
           onChange={handleChange}
           required
         />
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Logging in..." : "Log In"}
-        </button>
+        <button type="submit">Log In</button>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p style={{ color: "red" }}>{message}</p>}
     </div>
   );
 };
