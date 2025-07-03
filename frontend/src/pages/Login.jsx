@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-console.log("Login page mounted");
+console.log("Login page mounted"); //checkpoint 1
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -26,7 +26,8 @@ const Login = () => {
       const decodedPayload = JSON.parse(atob(token.split(".")[1]));
       const role = decodedPayload.role;
       localStorage.setItem("role", role);
-
+      console.log("Role:", role); //checkpoint 2
+      console.log("Token:", token); //checkpoint 3
       if (role === "admin") {
         navigate("/admin");
       } else navigate("/register");
