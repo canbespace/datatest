@@ -28,7 +28,7 @@ const Login = () => {
       localStorage.setItem("role", role);
 
       if (role === "admin") {
-        navigate("/admindashboard");
+        navigate("/admin");
       } else navigate("/register");
     } catch (err) {
       setMessage("Login failed.");
