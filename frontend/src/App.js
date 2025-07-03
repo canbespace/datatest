@@ -2,10 +2,9 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import AdminRoute from "./pages/AdminRoute";
 import Knowledge from "./pages/Knowledge";
 import Unauthorized from "./pages/Unauthorized"; // ✅ add this ...
+import AdminDashboard from "./pages/admin/AdminDashboard";
 
 function App() {
   return (
@@ -15,23 +14,9 @@ function App() {
         <Route path="/unauthorized" element={<Unauthorized />} />
         <Route path="/knowledge" element={<Knowledge />} />
         <Route path="/login" element={<Login />} />
-        <Route
-          path="/register"
-          element={
-            <AdminRoute>
-              <Register />
-            </AdminRoute>
-          }
-        />
-
-        <Route
-          path="/admin"
-          element={
-            <AdminRoute>
-              <AdminDashboard />
-            </AdminRoute>
-          }
-        />
+        <Route path="/register" element={<Register />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admindashboard" element={<AdminDashboard />} />
       </Routes>
     </BrowserRouter>
   );
