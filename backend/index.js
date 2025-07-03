@@ -6,7 +6,7 @@ const cors = require("cors"); //Allow cross-origin requests
 const dotenv = require("dotenv"); //Load environment variables like MONGO_URI and PORT from a .env file (dotenv)
 
 dotenv.config();
-
+app.use("/api/auth", authRoutes);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
