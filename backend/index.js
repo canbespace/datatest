@@ -6,9 +6,9 @@ const mongoose = require("mongoose"); //Connect to your MongoDB database
 const cors = require("cors"); //Allow cross-origin requests
 const dotenv = require("dotenv"); //Load environment variables like MONGO_URI and PORT from a .env file (dotenv)
 const authRoutes = require("./routes/auth");
+require("dotenv").config();
 
 dotenv.config();
-
 
 const PORT = process.env.PORT || 3000;
 
