@@ -4,8 +4,6 @@ const express = require("express"); //Handle routing and HTTP methods
 const mongoose = require("mongoose"); //Connect to your MongoDB database
 const cors = require("cors"); //Allow cross-origin requests
 const dotenv = require("dotenv"); //Load environment variables like MONGO_URI and PORT from a .env file (dotenv)
-const authRoutes = require("./routes/auth.js"); //Handles user authentication (register/login).
-const knowledgeRoutes = require("./routes/knowledge"); //Handles knowledge-based CRUD endpoints (with access control)
 
 dotenv.config();
 
@@ -20,9 +18,6 @@ app.use(
 );
 
 app.use(express.json());
-
-app.use("/api/auth", authRoutes);
-app.use("/api/knowledge", knowledgeRoutes);
 
 mongoose
   .connect(process.env.MONGO_URI)

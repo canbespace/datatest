@@ -6,8 +6,6 @@ console.log("Login page mounted");
 const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
-  const [message, setMessage] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -15,49 +13,20 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submission started"); // 测试点1
-    alert("Form submission started"); // For immediate visual feedback
-    if (isSubmitting) {
-      console.log("Form is already submitting."); // Log for debugging
-      return;
-    }
-
-    setIsSubmitting(true);
     try {
-      console.log("Making API request", formData); // 测试点2
       const res = await axios.post(
         "https://datatest-b2k5.onrender.com/api/auth/login",
         formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
       );
-      console.log("API response received", res.data); // 测试点3
-      alert(
-        `API response received: ${res.data.token ? "Token received" : "No token"}`,
-      ); // For immediate visual feedback
-
       const token = res.data.token;
-      const decoded = JSON.parse(atob(token.split(".")[1]));
+      // Optional: store token, decode role, etc.
       localStorage.setItem("token", token);
-      localStorage.setItem("role", decoded.role);
-      console.log("Navigation starting..."); // 测试点4
-      alert(
-        `Navigation starting to: ${decoded.role === "admin" ? "/admin" : "/knowledge"}`,
-      ); // For immediate visual feedback
-      if (decoded.role === "admin") {
-        navigate("/admin");
-      } else {
-        navigate("/knowledge");
-      }
+      localStorage.setItem("role", res.data.role);
+      if (res.data.role === "admin") {
+        navigate("/admindashboard");
+      } else navigate("/register");
     } catch (err) {
-      console.error("Login error:", err); // 测试点5
-      alert(`Login error: ${err.response?.data?.message || err.message}`); // For immediate visible feedback
-      setMessage(err.response?.data?.message || "Login failed.");
-    } finally {
-      setIsSubmitting(false);
+      setMessage("Login failed.");
     }
   };
 
