@@ -19,7 +19,7 @@ const Login = () => {
         "https://datatest-b2k5.onrender.com/api/auth/login",
         formData,
       );
-      const token = res.data.token;
+      /*  const token = res.data.token;
       localStorage.setItem("token", token);
 
       // Decode JWT payload (base64 decode)
@@ -29,8 +29,8 @@ const Login = () => {
       console.log("Role:", role); //checkpoint 2
       console.log("Token:", token); //checkpoint 3
       if (role === "admin") {
-        navigate("/admin");
-      } else navigate("/register");
+      */
+      navigate("/admin");
     } catch (err) {
       setMessage("Login failed.");
     }

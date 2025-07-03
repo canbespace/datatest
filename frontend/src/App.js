@@ -5,8 +5,6 @@ import Login from "./pages/Login";
 import Knowledge from "./pages/Knowledge";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 
-
-
 function App() {
   return (
     <BrowserRouter>
