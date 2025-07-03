@@ -4,7 +4,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Knowledge from "./pages/Knowledge";
 import AdminDashboard from "./pages/admin/AdminDashboard";
-const authRoutes = require("./routes/auth");
+
 
 
 function App() {
