@@ -1,4 +1,7 @@
-// AdminDashboard.js
+// frontend/src/pages/admin/AdminDashboard.jsx
+//This file defines the AdminDashboard component, which is only accessible to users with the "admin" role.
+//It includes features for creating new users, managing knowledge base entries, and other administrative tasks.
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import UserTable from "./UserTable";
@@ -9,6 +12,19 @@ import KeywordAnalytics from "./KeywordAnalytics";
 const AdminDashboard = () => {
   console.log("✅ AdminDashboard mounted!");
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    axios
+      .get("https://datatest-b2k5.onrender.com/api/knowledge", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => setEntries(res.data))
+      .catch((err) => {
+        console.error("Failed to fetch knowledge articles:", err);
+        setMessage("⚠️ Could not load entries.");
+      });
+  }, []);
+
   const [entries, setEntries] = useState([]);
   const [message, setMessage] = useState("");
   const [msg, setMsg] = useState("");
@@ -18,32 +34,48 @@ const AdminDashboard = () => {
     role: "user",
   });
 
-  useEffect(() => {
-    const fetchEntries = async () => {
+  const CreateArticle = () => {
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      const token = localStorage.getItem("token");
+
       try {
-        const token = localStorage.getItem("token");
-        const role = localStorage.getItem("role");
-
-        if (role !== "admin") {
-          setMessage("🚫 Access denied: Admins only.");
-          return;
-        }
-
-        const res = await axios.get(
+        const res = await axios.post(
           "https://datatest-b2k5.onrender.com/api/knowledge",
+          { title, content },
           {
-            headers: { Authorization: `Bearer ${token}` },
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
           },
         );
-        setEntries(res.data);
+        console.log("Article created:", res.data);
       } catch (err) {
-        setMessage("⚠️ Error loading entries.");
+        console.error("Error creating article:", err);
       }
     };
 
-    fetchEntries();
-  }, []);
+    return (
+      <form onSubmit={handleSubmit}>
+        <input
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Title"
+        />
+        <textarea
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="Content"
+        />
+        <button type="submit">Create Article</button>
+      </form>
+    );
+  };
 
+  //create an account for a new user
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
@@ -61,7 +93,7 @@ const AdminDashboard = () => {
       setMsg("❌ Failed to register user.");
     }
   };
-
+  //delete an article
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
@@ -80,6 +112,11 @@ const AdminDashboard = () => {
   return (
     <div style={{ padding: "2rem" }}>
       <h1>🛡️ Admin Dashboard</h1>
+
+      <section style={{ marginBottom: "2rem" }}>
+        <h2>Create New Knowledge Article</h2>
+        {CreateArticle()} {/* <-- this line actually invokes the component */}
+      </section>
 
       <section style={{ marginBottom: "2rem" }}>
         <h2>Create New User</h2>
