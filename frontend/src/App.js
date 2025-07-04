@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Knowledge from "./pages/Knowledge";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 
+
 console.log("Router location:", window.location.pathname);
 
 function App() {

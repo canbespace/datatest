@@ -2,7 +2,7 @@
 
 const express = require("express");
 const router = express.Router();
-const Knowledge = require("./models/Knowledge"); // Your Mongoose model
+const Knowledge = require("../models/KnowledgeModel"); // Adjust path as needed
 const requireAuth = require("../middleware/auth"); // ✅ checks token
 const requireAdmin = require("../middleware/requireAdmin");
 
