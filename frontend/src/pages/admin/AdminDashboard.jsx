@@ -44,7 +44,7 @@ const AdminDashboard = () => {
 
       try {
         const res = await axios.post(
-          "https://datatest-b2k5.onrender.com/api/knowledge",
+          "https://datatest-b2k5.onrender.com/api/auth/knowledge",
           { title, content },
           {
             headers: {

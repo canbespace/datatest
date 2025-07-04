@@ -2,12 +2,12 @@
 
 const express = require("express");
 const router = express.Router();
-const Knowledge = require("../models/Knowledge"); // Your Mongoose model
+const Knowledge = require("./models/Knowledge"); // Your Mongoose model
 const requireAuth = require("../middleware/auth"); // ✅ checks token
 const requireAdmin = require("../middleware/requireAdmin");
 
 // GET all articles (for logged-in users)
-router.get("/", requireAuth, async (req, res) => {
+router.get("/knowledge", requireAuth, async (req, res) => {
   try {
     const articles = await Knowledge.find();
     res.json(articles);
