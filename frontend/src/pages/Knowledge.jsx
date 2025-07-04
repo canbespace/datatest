@@ -48,4 +48,3 @@ const Knowledge = () => {
 };
 
 export default Knowledge;
-

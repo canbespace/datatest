@@ -23,9 +23,9 @@ const Login = () => {
       );
       const token = res.data.token;
       localStorage.setItem("token", token);
-
+      navigate("/knowledge");
       // Decode JWT payload (base64 decode)
-      const decodedPayload = JSON.parse(atob(token.split(".")[1]));
+      /*  const decodedPayload = JSON.parse(atob(token.split(".")[1]));
       const role = decodedPayload.role;
       localStorage.setItem("role", role);
       console.log("Role:", role); //checkpoint 2
@@ -33,7 +33,7 @@ const Login = () => {
       if (role === "admin") {
         console.log("🚀 Attempting redirect to /admin");
         navigate("/admin");
-      }
+      }*/
     } catch (err) {
       setMessage("Login failed.");
     }
