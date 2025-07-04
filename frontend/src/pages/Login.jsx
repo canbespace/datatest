@@ -1,3 +1,5 @@
+//frontend/src/pages/Login.jsx
+
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +21,7 @@ const Login = () => {
         "https://datatest-b2k5.onrender.com/api/auth/login",
         formData,
       );
-      /*  const token = res.data.token;
+      const token = res.data.token;
       localStorage.setItem("token", token);
 
       // Decode JWT payload (base64 decode)
@@ -29,10 +31,9 @@ const Login = () => {
       console.log("Role:", role); //checkpoint 2
       console.log("Token:", token); //checkpoint 3
       if (role === "admin") {
-      */
-      console.log("🚀 Attempting redirect to /admin");
-
-      navigate("/admin");
+        console.log("🚀 Attempting redirect to /admin");
+        navigate("/admin");
+      }
     } catch (err) {
       setMessage("Login failed.");
     }

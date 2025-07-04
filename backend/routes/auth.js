@@ -1,3 +1,6 @@
+//backend/routes/auth.js
+//This file defines the routes for user authentication, such as login and registration.
+
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");

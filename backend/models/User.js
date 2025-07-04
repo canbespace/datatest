@@ -1,3 +1,6 @@
+//backend/models/User.js
+//A backend setup for storing user entries—could be for a wiki, blog, note-taking app, or even a learning database.
+
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
