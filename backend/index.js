@@ -19,7 +19,7 @@ app.use(
 
 app.use(express.json());
 app.use("/api/auth", authRoutes);
-app.use("/api/knowledgeRoute", knowledgeRouter);
+app.use("/api/knowledge", knowledgeRouter);
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected"))
