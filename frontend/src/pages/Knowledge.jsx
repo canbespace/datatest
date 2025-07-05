@@ -13,7 +13,7 @@ const Knowledge = () => {
     const token = localStorage.getItem("token"); // or however you store it
 
     axios
-      .get("https://datatest-b2k5.onrender.com/api/knowledgeRoute", {
+      .get("https://datatest-b2k5.onrender.com/api/knowledge/knowledge", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
