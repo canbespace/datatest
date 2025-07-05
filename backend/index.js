@@ -38,6 +38,6 @@ app.get("/", (req, res) => {
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 // Catch-all route to serve React app
-app.get("*", (req, res) => {
+app.get("/:splat*", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
 });
