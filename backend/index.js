@@ -7,6 +7,7 @@ const cors = require("cors"); //Allow cross-origin requests
 const dotenv = require("dotenv"); //Load environment variables like MONGO_URI and PORT from a .env file (dotenv)
 dotenv.config();
 const knowledgeRouter = require("./routes/knowledgeRoute"); // adjust the path as needed
+const path = require("path");
 
 const PORT = process.env.PORT || 3000;
 
@@ -31,4 +32,12 @@ app.listen(PORT, () => {
 
 app.get("/", (req, res) => {
   res.send("Backend API is running 🛠️");
+});
+
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+// Catch-all route to serve React app
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
 });
