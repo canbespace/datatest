@@ -19,24 +19,29 @@ app.use(
 );
 
 app.use(express.json());
+
+// API routes should come first
 app.use("/api/auth", authRoutes);
 app.use("/api/knowledge", knowledgeRouter);
+
+// Basic health check route
+app.get("/api", (req, res) => {
+  res.send("Backend API is running 🛠️");
+});
 
 // Serve static files from the React app build directory
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 // Catch-all handler: send back React's index.html file for any non-API routes
+// This MUST come last, after all other routes
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
 });
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ Mongo error:", err));
-
-app.get("/", (req, res) => {
-  res.send("Backend API is running 🛠️");
-});
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
