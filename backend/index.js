@@ -30,14 +30,6 @@ app.get("/", (req, res) => {
   res.send("Backend API is running 🛠️");
 });
 
-// Serve static frontend files
-app.use(express.static(path.join(__dirname, "../frontend/build")));
-
-// Catch-all route to serve React app (must be last)
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
-});
-
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
