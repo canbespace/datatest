@@ -2,7 +2,7 @@
 //This file defines the Knowledge page component, which fetches and displays knowledge articles.
 //It uses the useEffect hook to fetch data when the component mounts and axios to make the HTTP request.
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../api";
 
 const Knowledge = () => {
   const [articles, setArticles] = useState([]);
@@ -12,7 +12,7 @@ const Knowledge = () => {
 
     const token = localStorage.getItem("token"); // or however you store it
 
-    axios
+    API
       .get("/api/knowledge", {
         headers: {
           Authorization: `Bearer ${token}`,
